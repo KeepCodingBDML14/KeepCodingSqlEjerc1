@@ -4,4 +4,14 @@ student_id INT PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(50) NOT NULL,
 surname VARCHAR(50) NOT NULL,
 email VARCHAR(50) UNIQUE NOT NULL,
-phone VARCHAR(50) );
+phone VARCHAR(50) 
+);
+
+-- Crear la Tabla de bootcamp
+CREATE TABLE bootcamp(
+bootcamp_id INT PRIMARY KEY AUTO_INCREMENT,
+name_bootcamp VARCHAR(50) NOT NULL,
+descrption TEXT,
+initial_date DATE NOT NULL,
+end_date DATE NOT NULL
+);
