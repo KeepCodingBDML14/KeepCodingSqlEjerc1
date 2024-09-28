@@ -1,1 +1,7 @@
-
+-- Crear la Tabla student
+CREATE TABLE student(
+student_id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(50) NOT NULL,
+surname VARCHAR(50) NOT NULL,
+email VARCHAR(50) UNIQUE NOT NULL,
+phone VARCHAR(50) );
