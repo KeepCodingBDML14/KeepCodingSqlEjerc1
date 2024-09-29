@@ -1,19 +1,56 @@
-Crear  la tabla ivr_calls
+-- Crear  la tabla ivr_calls
 
 CREATE TABLE ivr_calls(
-ivr_calls_id INT PRIMARY KEY AUTO_INCREMENT,
-calls_phone_number VARCHAR(255) NOT NULL,
-calls_ivr_result VARCHAR(255) NOT NULL
-calls_vdn_label VARCHAR(255) NOT NULL --Etiqueta del número de entrada (VDN)de la llamada
-calls_start_date DATA NOT NULL,
-calls_star_date_id INT,
-calls_end_date DATA NOT NULL,
-calls_end_date_id INT,
-calls_total_duration INT,
-calls_customer_segment VARCHAR(255) NOT NULL,
-calls_ivr_language VARCHAR(255) NOT NULL,
-calls_steps_module VARCHAR(255) NOT NULL,
-calls_module_aggregation VARCHAR(255) NOT NULL,
-billing_account_id INT,
-customer_phone VARCHAR(255) NOT NULL
+  ivr_calls_id INT PRIMARY KEY AUTO_INCREMENT,
+  calls_phone_number VARCHAR(255) NOT NULL,
+  calls_ivr_result VARCHAR(255) NOT NULL
+  calls_vdn_label VARCHAR(255) NOT NULL --Etiqueta del número de entrada (VDN)de la llamada
+  calls_start_date DATA NOT NULL,
+  calls_star_date_id INT,
+  calls_end_date DATA NOT NULL,
+  calls_end_date_id INT,
+  calls_total_duration INT,
+  calls_customer_segment VARCHAR(255) NOT NULL,
+  calls_ivr_language VARCHAR(255) NOT NULL,
+  calls_steps_module VARCHAR(255) NOT NULL,
+  calls_module_aggregation VARCHAR(255) NOT NULL,
+  billing_account_id INT,
+  customer_phone VARCHAR(255) NOT NULL
 );
+
+-- Crear Tabla ivr_module
+CREATE TABLE module_sequence INT PRIMARY KEY AUTO_INCREMENT,
+  module_name  VARCHAR(255) NOT NULL,
+  module_duration INT,
+  module_result VARCHAR(255) NOT NULL
+);
+
+-- Crear Tabla ivr_steps
+CREATE step_sequence INT PRIMARY KEY AUTO_INCREMENT,
+  step_name VARCHAR(255) NOT NULL,
+  step_result VARCHAR(255) NOT NULL,
+  step_description_error VARCHAR(255) NOT NULL
+);
+
+--Relaciones entre tablas ivr_calls, ivr_module, ivr_steps
+
+CREATE  TABLE iver_calls_calls_steps_module(
+  iver_calls_calls_steps_module_id INT PRIMARY KEY AUTOINCREMENT,
+  iver_calls INT,  
+  ivr_module INT,
+  calls_ivr_id INT,
+  FOREIGN KEY (ivr_module) REFERENCES (ivr_module) ON DELETE CASCADE,
+  FOREIGN KEY (call_ivr_id) REFERENCES (call_ivr_id) ON DELETE CASCADE
+
+CREATE TABLE iver-module_module_sequence(
+  ivr_module_module_sequence INT PRIMARY KEY AUTO_INCREMENT,
+  calls_steps-module INT,
+  FOREIGN KEY (module_sequence) ON DELETE CASCADE
+);
+
+CREATE TABLE ivr_step_step_sequence INT PRIMARY KEY AUTO_INCREMENT,
+  module_sequence INT,
+  FOREIGN KEY step_sequence REFERENCES ( module_sequence) ON DELETE CASCADE
+);
+  
+
