@@ -1,1 +1,19 @@
+Crear  la tabla ivr_calls
 
+CREATE TABLE ivr_calls(
+ivr_calls_id INT PRIMARY KEY AUTO_INCREMENT,
+calls_phone_number VARCHAR(255) NOT NULL,
+calls_ivr_result VARCHAR(255) NOT NULL
+calls_vdn_label VARCHAR(255) NOT NULL --Etiqueta del número de entrada (VDN)de la llamada
+calls_start_date DATA NOT NULL,
+calls_star_date_id INT,
+calls_end_date DATA NOT NULL,
+calls_end_date_id INT,
+calls_total_duration INT,
+calls_customer_segment VARCHAR(255) NOT NULL,
+calls_ivr_language VARCHAR(255) NOT NULL,
+calls_steps_module VARCHAR(255) NOT NULL,
+calls_module_aggregation VARCHAR(255) NOT NULL,
+billing_account_id INT,
+customer_phone VARCHAR(255) NOT NULL
+);
