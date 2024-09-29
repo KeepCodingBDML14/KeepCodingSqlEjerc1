@@ -59,10 +59,3 @@ REFERENCES teacher(teacher_id) ON DELETE CASCADA,
   UNIQUE(module_id, teacher_id) -- Un teacher sólo puede enseñar un module a la vez
 );
 
-
-
-
-
-
-
-...........................333333333333333333333333333333333333333333
