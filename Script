@@ -1,17 +1,68 @@
 -- Crear la Tabla student
 CREATE TABLE student(
-student_id INT PRIMARY KEY AUTO_INCREMENT,
-name VARCHAR(50) NOT NULL,
-surname VARCHAR(50) NOT NULL,
-email VARCHAR(50) UNIQUE NOT NULL,
-phone VARCHAR(50) 
+  student_id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  surname VARCHAR(50) NOT NULL,
+  email VARCHAR(50) UNIQUE NOT NULL,
+  phone VARCHAR(50) 
 );
 
 -- Crear la Tabla de bootcamp
 CREATE TABLE bootcamp(
-bootcamp_id INT PRIMARY KEY AUTO_INCREMENT,
-name_bootcamp VARCHAR(50) NOT NULL,
-descrption TEXT,
-initial_date DATE NOT NULL,
-end_date DATE NOT NULL
+  bootcamp_id INT PRIMARY KEY AUTO_INCREMENT,
+  name_bootcamp VARCHAR(50) NOT NULL,
+  descrption TEXT,
+  initial_date DATE NOT NULL,
+  end_date DATE NOT NULL
 );
+
+-- Crear la Tabla module
+CREATE TABLE module(
+  module_id IN PRYIMARY KEY AUTO_INCREMENT,
+  module_name VARCHAR(50) NOT NULL,
+  description TEXT,
+  duration IN NOT NULL 
+  bootcamp_id INT,
+  FOREIGN KEY (bootcamp_id) -- las claves foráneas se definen para establecer las relaciones entre tablas
+REFERENCES bootcamp (bootcamp_id) ON DELETE CASCADE -- permite que las filas relacionadas sean eliminadas cuando se elimine una fila correspondiente en la tabla padre
+);
+
+--Crear la Tabla de Teacher
+CREATE TABLE teacher(
+  teacher_id INT PRIMARY KEY AUTO__INCREMENT,+
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(50) UNIQUE NOT NULL,
+  Specialty VARCHAR(50) NOT NULL
+);
+
+-- Crear la Tabla Inscription
+CREATE TABLE inscription(
+  inscription_id INT PRIMARY KEY AUTO_INCREMENT,
+  student_id INT,
+  bootcamp_id INT,
+  FOREIGN KEY (student_id)
+REFERENCES student(student_id) ON DELETE CASCADE,
+  FOREIGN KEY (bootcamp_id)
+REFERENCES bootcamp(bootcamp_id) ON DELETE CASCADE,
+  UNIQUE (student_id), bootcamp_id) --para evitar duplicados de inscripciones
+);
+
+--Crear Tabla module-teacher
+CREATE TABLE module_teacher(
+  module_id_teacher IN PRIMARY KEY AUTO_INCREMENT,
+  module_id INT
+  teacher_id INT,
+  FOREIGN KEY (module_id)
+REFERENCES module(module_id) ON DELETE CASCADE,
+  FOREIGN KEY (teacher_id)
+REFERENCES teacher(teacher_id) ON DELETE CASCADA,
+  UNIQUE(module_id, teacher_id) -- Un teacher sólo puede enseñar un module a la vez
+);
+
+
+
+
+
+
+
+...........................333333333333333333333333333333333333333333
